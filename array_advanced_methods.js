@@ -1,227 +1,196 @@
-// metodo map
+// esercizio 1
 
-// applica una funzione a ogni elemento, restituendo il valore dell'elemento trasformato
-
-const listaSpesa = ["latte", "uova", "burro"];
-const elementiHTML = listaSpesa.map((element) => {
-  return "<div class='lista-spesa-element'>" + element + "</div>";
-});
-
-//console.log(elementiHTML);
-
-// metodo filter
-
-// crea un nuovo array con gli elementi che soddisfano una condizione booleana
-
-//const numeri = [1, 2, 3, 4, 5];
-//const numeriPari = numeri.filter((n) => n % 2 === 0);
-
-//console.log(numeriPari);
-
-// metodi some ed every
-
-// some - verifica se almeno un elemento soddisfa una certa condizione
-// every - verifica se TUTTI gli elementi soddisfano una certa condizione
-
-//const sonoPresentiNumeriNegativi = numeri.some((n) => n < 0);
-
-//const sonoTuttiNumeriPositivi = numeri.every((n) => n > 0);
-
-//console.log(sonoPresentiNumeriNegativi, sonoTuttiNumeriPositivi);
-
-// metodo find e findIndex
-
-// find - restituisce il primo elemento che soddisfa una condizione
-// findIndex - restituisce l'indice del primo elemento che soddisfa una condzione
-
-const users = [
-  { nome: "Fabio", age: 23 },
-  { nome: "Michele", age: 31 },
-  { nome: "Dario", age: 34 },
+/* const persons = [
+  { name: "Paul", age: 16 },
+  { name: "George", age: 17 },
+  { name: "Lucas", age: 21 },
+  { name: "Marco", age: 32 },
+  { name: "Peter", age: 18 },
+  { name: "Carl", age: 13 },
+  { name: "Simon", age: 24 },
+  { name: "Mark", age: 15 },
+  { name: "Sandra", age: 34 },
+  { name: "Alice", age: 28 },
 ];
 
-const firstOver30 = users.find((user) => user.age > 30);
-const firstOver30Index = users.findIndex((user) => user.age > 30);
+const adults = persons.filter((person) => person.age >= 18);
+console.log(persons);
+console.log(adults);
 
-//console.log(firstOver30);
+// esercizio 2
 
-// metodo sort
+function firstUncompletedNote(notes) {
+  return notes.find((note) => note.todos.some((todo) => todo.done === false));
+}
+// altra opzione
+function firstUncompletedNote(notes) {
+  return notes.find((note) => note.todos.filter((todo) => !todo.done).length);
+}  
 
-// sort - ordina array secondo una funzione di confronto
-
-// ordiniamo l'array di libri per anno, poi per titolo se gli anni sono uguali
-const libri = [
-  { titolo: "Zeta", anno: 2010 },
-  { titolo: "Alpha", anno: 2010 },
-  { titolo: "Gamma", anno: 2005 },
-];
-
-libri.sort((a, b) =>
-  // se anno è diverso - ordina per anno - ordina per titolo
-  a.anno !== b.anno ? a.anno - b.anno : a.titolo.localeCompare(b.titolo)
-);
-
-//console.log(libri);
-
-// metodo reduce
-
-// reduce - riduce l'array a un singolo valore, accumulando i risultati a ogni iterazione
-
-const transazioni = [
-  { importo: 100, tipo: "entrata" },
-  { importo: 50, tipo: "uscita" },
-  { importo: 10, tipo: "uscita" },
-  { importo: 200, tipo: "entrata" },
-];
-
-const riepilogo = transazioni.reduce(
-  (riep, t) => {
-    if (t.tipo === "entrata") riep.guadagni += t.importo;
-    else riep.spese += t.importo;
-    riep.saldo = riep.guadagni - riep.spese;
-    return riep;
-  },
-  {
-    saldo: 0,
-    spese: 0,
-    guadagni: 0,
-  }
-);
-
-//const sommaNumeri = numeri.reduce((previous, current) => {
-//  return (previous += current);
-//}, 0);
-
-//console.log(sommaNumeri);
-
-// metodo flat
-
-// flat - appiattisce l'array fino a un certo livello
-
-const numeri = [1, [2, 3], [4, [5]]];
-
-const numeriFlat = numeri.flat(1); // riduciamo di un livello la struttura annidata
-
-//console.log(numeriFlat);
-
-// metodo flatMap --> combina flat e map in un unico costrutto
-
-const stringheAnnidate = [["ciao"], ["hello", "hi"]];
-
-const trasformed = stringheAnnidate.flatMap((subarr) =>
-  subarr.map((s) => s + "!")
-);
-
-//console.log(trasformed);
-
-// --- //
-
-const prodotti = [
-  { categoria: "food", prezzo: 10, disponibile: true, tags: ["bio", "promo"] },
-  { categoria: "tech", prezzo: 50, disponibile: false, tags: ["nuovo"] },
-  {
-    categoria: "food",
-    prezzo: 20,
-    disponibile: true,
-    tags: ["bio", "offerta"],
-  },
-];
-
-// filtriamo solo i prodotti disponibili
-const avaiableProducts = prodotti.filter((prodotto) => prodotto.disponibile);
-
-//console.log(avaiableProducts);
-
-//ordinare per prezzo crescente
-const productSorted = prodotti.map((p) => p.prezzo).sort((a, b) => a - b);
-
-// se il valore restituito dal sort è negativo, a viene prima di b
-// se il valore restituito dal sort è positivo, a viene dopo di b
-
-//console.log(productSorted);
-
-// somma totale dei prezzi
-
-const totalPrice = prodotti.reduce((prev, curr) => {
-  return (prev += curr.prezzo);
-}, 0);
-
-//console.log(totalPrice);
-
-const studenti = [
-  {
-    nome: "Luca",
-    corsi: [
-      { nomeCorso: "Matematica", voto: 28 },
-      { nomeCorso: "Storia", voto: 22 },
-    ],
-  },
-  {
-    nome: "Giulia",
-    corsi: [
-      { nomeCorso: "Matematica", voto: 18 },
-      { nomeCorso: "Informatica", voto: 30 },
-    ],
-  },
-  { nome: "Marco", corsi: [{ nomeCorso: "Informatica", voto: 25 }] },
-];
-
-// filtrare gli studenti che hanno almeno un corso con voto >= 18
-
-const studentiPromossi = studenti.filter((studente) =>
-  studente.corsi.some((c) => c.voto >= 18)
-);
-
-//console.log(studentiPromossi);
-
-// esercizi di allenamento
-
-const ordini = [
+const notes = [
   {
     id: 1,
-    importo: 120,
-    prodotti: [
-      { nome: "Maglia", prezzo: 20, tags: ["moda"] },
-      { nome: "Pantaloni", prezzo: 40, tags: ["promo"] },
+    description: "Workout program",
+    todos: [
+      {
+        id: 1,
+        name: "Push ups - 10 x 3",
+        done: true,
+      },
+      {
+        id: 2,
+        name: "Abdominals - 20 x 3",
+        done: true,
+      },
+      {
+        id: 3,
+        name: "Tapis Roulant - 15min",
+        done: true,
+      },
     ],
   },
   {
     id: 2,
-    importo: 80,
-    prodotti: [{ nome: "Scarpe", prezzo: 50, tags: ["nuovo"] }],
+    description: "Front-end Roadmap",
+    todos: [
+      {
+        id: 1,
+        name: "Learn HTML",
+        done: true,
+      },
+      {
+        id: 2,
+        name: "Learn CSS",
+        done: false,
+      },
+      {
+        id: 3,
+        name: "Learn JavaScript",
+        done: true,
+      },
+      {
+        id: 4,
+        name: "Learn Angular",
+        done: false,
+      },
+    ],
   },
   {
     id: 3,
-    importo: 200,
-    prodotti: [{ nome: "Cappotto", prezzo: 100, tags: ["moda", "inverno"] }],
+    description: "My Movies Library",
+    todos: [
+      {
+        id: 1,
+        name: "La città incantata",
+        done: true,
+      },
+      {
+        id: 2,
+        name: "Avatar",
+        done: true,
+      },
+      {
+        id: 3,
+        name: "Titanic",
+        done: false,
+      },
+    ],
   },
 ];
 
-// filtrare ordini con importo superiore a 100
-const ordiniGrandi = ordini.filter((ordine) => ordine.importo > 100);
+const noteInProgress = firstUncompletedNote(notes);
+console.log("All notes: ", notes);
+console.log("First note in progress: ", noteInProgress);
 
-console.log(ordiniGrandi);
+// esercizio 3
 
-//estrarre tutti i prezzi dei prodotti con flatMap
-const prezziProdotti = ordini.flatMap((ordine) =>
-  ordine.prodotti.map((p) => p.prezzo)
-);
+const fruits = ["Mela", "Banana", "Kiwi", "Fragola"];
 
-console.log(prezziProdotti);
+fruits.forEach(function (fruit) {
+  console.log(fruit + "!");
+});
 
-// ordina i prezzi in ordine decrescente
-const sortedPrices = prezziProdotti.sort((a, b) => b - a);
+// esercizio 4
 
-console.log(sortedPrices);
+const persons = [
+  { name: "Paul", age: 16 },
+  { name: "George", age: 17 },
+  { name: "Lucas", age: 21 },
+  { name: "Marco", age: 32 },
+  { name: "Peter", age: 18 },
+  { name: "Carl", age: 13 },
+  { name: "Simon", age: 24 },
+  { name: "Mark", age: 15 },
+  { name: "Sandra", age: 34 },
+  { name: "Alice", age: 28 },
+];
 
-// sommiamo i prezzi con reduce
-const total = sortedPrices.reduce((prev, current) => prev + current, 0);
+const nicknames = persons.map((person) => {
+  return person.name + "-" + person.age;
+});
 
-console.log(total);
+console.log(persons);
+console.log(nicknames); 
 
-// troviamo il primo ordine che contiene un prodotto con tag inverno
-const ordineInverno = ordini.find((ordine) =>
-  ordine.prodotti.some((prodotto) => prodotto.tags.includes("inverno"))
-);
+// esercizio 5
 
-console.log(ordineInverno);
+function calculateAverageAge(persons) {
+  const averageAge = persons.reduce(
+    (average, person) => average + person.age,
+    0
+  );
+  return averageAge / persons.length;
+}
+
+const persons = [
+  { name: "Paul", age: 16 },
+  { name: "George", age: 17 },
+  { name: "Lucas", age: 21 },
+  { name: "Marco", age: 32 },
+  { name: "Peter", age: 18 },
+  { name: "Carl", age: 13 },
+  { name: "Simon", age: 24 },
+  { name: "Mark", age: 15 },
+  { name: "Sandra", age: 34 },
+  { name: "Alice", age: 28 },
+];
+
+const average = calculateAverageAge(persons);
+console.log(persons);
+console.log(average); */
+
+// esercizio riepilogativo
+
+const studenti = [
+  { nome: "Alice", voto: 95 },
+  { nome: "Bob", voto: 88 },
+  { nome: "Carol", voto: 76 },
+  { nome: "David", voto: 92 },
+  { nome: "Eve", voto: 84 },
+];
+
+// stampiamo i nomi degli studenti
+console.log("Nomi degli studenti:");
+studenti.forEach((studente) => {
+  console.log(studente.nome);
+});
+
+// troviamo uno studente con voto superiore a 90
+const studenteVotoAlto = studenti.find((studente) => studente.voto > 90);
+console.log("Studente con voto superiore a 90:");
+console.log(studenteVotoAlto);
+
+// calcoliamo la media dei voti degli studenti
+const sommaVoti = studenti.reduce((acc, studente) => acc + studente.voto, 0);
+const mediaVoti = sommaVoti / studenti.length;
+console.log("Media dei voti degli studenti:", mediaVoti);
+
+// creiamo un nuovo array con i nomi degli studenti in maiuscolo
+const nomiMaiuscolo = studenti.map((studente) => studente.nome.toUpperCase());
+console.log("Nomi degli studenti in maiuscolo:");
+console.log(nomiMaiuscolo);
+
+// troviamo gli studenti con voti superiori a 85
+const studentiVotoAlto = studenti.filter((studente) => studente.voto > 85);
+console.log("Studenti con voto superiore a 85:");
+console.log(studentiVotoAlto);
