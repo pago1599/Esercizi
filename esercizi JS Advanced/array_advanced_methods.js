@@ -108,7 +108,7 @@ const fruits = ["Mela", "Banana", "Kiwi", "Fragola"];
 
 fruits.forEach(function (fruit) {
   console.log(fruit + "!");
-});
+}); */
 
 // esercizio 4
 
@@ -126,15 +126,19 @@ const persons = [
 ];
 
 const nicknames = persons.map((person) => {
-  return person.name + "-" + person.age;
+  return (
+    person.name.toUpperCase() +
+    "-" +
+    (Math.floor(Math.random() * 100) + person.age)
+  );
 });
 
 console.log(persons);
-console.log(nicknames); 
-
+console.log(nicknames);
+console.log(Math.random());
 // esercizio 5
 
-function calculateAverageAge(persons) {
+/* function calculateAverageAge(persons) {
   const averageAge = persons.reduce(
     (average, person) => average + person.age,
     0
