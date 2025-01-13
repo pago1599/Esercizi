@@ -128,7 +128,7 @@ getUserSession(
             console.log("Ordine effettuato con successo", order);
           },
           (cart) => {
-            console.log("'Si è verificato un prolema", cart);
+            console.log("'Si è verificato un problema", cart);
           }
         );
       });
