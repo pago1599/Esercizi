@@ -8,9 +8,19 @@
   <body>
     <h1 id="titolo">Ciao classe</h1>
     <h2 id="sottotitolo" class="bold">Ciao classe</h2>
-    <div class="paragrafi"></div>
-    <script src="dom.js"></script>
-    <script>
+    <div class="paragrafi">
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        <span class="highlight">text</span>
+        Accusamus explicabo perspiciatis harum quis sunt debitis quibusdam
+        corporis excepturi similique ullam ad, reprehenderit natus saepe nam,
+        maxime, ipsum tenetur? Recusandae, officia?
+      </p>
+    </div>
+    <script src="dom.js" async></script>
+    <!-- async si usa per far eseguire lo script in modo asincrono -->
+    <script defer>
+      /* defer si usa per far eseguire lo script alla fine, dopo aver caricato tutta la pagina */
       console.log(`Codice JS in linea`);
     </script>
   </body>

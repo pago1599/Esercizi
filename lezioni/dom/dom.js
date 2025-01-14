@@ -27,3 +27,9 @@ const paragrafi = [`Questo è un paragrafo`, `Questo è un altro paragrafo`];
 paragrafi.forEach((p) => {
   document.querySelector(`.paragrafi`).innerHTML += `<p>` + p + `</p>`;
 });
+
+// restituire un elemento a ritroso di genitorialità in base a un selettore - closest
+
+const $closestParagrafi = docuemnt
+  .querySelector(`.highlight`)
+  .closest(`.paragrafi`);
