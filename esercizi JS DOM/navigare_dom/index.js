@@ -10,10 +10,10 @@ const ul = document.querySelector(`ul`);
 console.log(ul.parentElement);
 
 const secondLi = ul.children[1];
-console.log(secondLi);
+console.log(secondLi.innerHTML);
 
-const nextSibling = secondLi.nextElementSibling;
-console.log(secondLi.nextElementSibling);
+const nextLi = secondLi.nextElementSibling;
+console.log(nextLi.innerHTML);
 
-const previousSibling = secondLi.previousElementSibling;
-console.log(secondLi.previousElementSibling);
+const previousLi = secondLi.previousElementSibling;
+console.log(previousLi.innerHTML);

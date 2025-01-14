@@ -1,11 +1,11 @@
-const $description = document.querySelector(`#description`);
+const $description = document.querySelector(`#description p`);
 
 // modifica del contenuto HTML interno dell'elemento - innerHTML
 $description.innerHTML = `Contenuto modificato`;
 
 // modifica del testo di un elemento - textContent o innerText
-document.querySelector(`#description`).textContent;
-document.querySelector(`#description`).innerText;
+document.querySelector(`#description p`).textContent;
+document.querySelector(`#description p`).innerText;
 
 // leggere e modificare gli attributi - getAttribute() e setAttribute()
 document.querySelector(`#description p`).getAttribute(`title`);
@@ -17,8 +17,8 @@ document
 document.querySelector(`#description p`).removeAttribute(`title`);
 
 // modificare gli stili CSS tramite JavaScript - .style
-document.querySelector(`#description`).style.color = `red`;
-document.querySelector(`#description`).style.backroundColor = `green`;
+document.querySelector(`#description p`).style.color = `red`;
+document.querySelector(`#description p`).style.backroundColor = `green`;
 
 // modifica e lettura delle classi CSS - .classList
 
