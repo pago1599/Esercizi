@@ -9,10 +9,12 @@ function caricamentoDati() {
 async function ottieniDati() {
   try {
     const data = await caricamentoDati();
-    console.log(data);
+    return data;
   } catch (error) {
     console.log(`Errore nel caricamento dati`);
   }
 }
 
-ottieniDati();
+ottieniDati().then((data) => {
+  console.log(data);
+});
