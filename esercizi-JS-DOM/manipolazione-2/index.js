@@ -3,17 +3,15 @@
 Recuperare il valore di ciascun campo di input e creare un oggetto person contenente le proprietà: firstName, lastName e age.
 Infine recuperare l'elemento form e aggiungere l'attributo data-person contenente l'oggetto person in formato json. */
 
-const form = document.querySelector(`form`);
+const firstName = document.getElementById("firstName").value;
+const lastName = document.getElementById("lastName").value;
+const age = document.getElementById("age").value;
 
-const firstNamedId = document.getElementById(`firstName`);
-const lastNamedId = document.getElementById(`lastName`);
-const ageId = document.getElementById(`age`);
+const person = {
+  firstName: firstName.value,
+  lastName: lastName.value,
+  age: age.value,
+};
 
-const firstName = firstNamedId.value;
-const lastName = lastNamedId.value;
-const age = ageId.value;
-
-const person = { firstName, lastName, age };
-let jsonPerson = JSON.stringify(person);
-
-form.setAttribute(`dara-person`, jsonPerson);
+const form = document.querySelector("form");
+form.setAttribute("data-person", JSON.stringify(person));
